@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebPartener — Web Design &amp; Automatizare AI</title>
+<meta name="description" content="WebPartener creează site-uri moderne și automatizări AI care fac afacerea ta mai eficientă. Design profesional, procese automatizate, rezultate măsurabile.">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #131c33;
+    --navy-2: #1c2a4a;
+    --blue: #1c5fe0;
+    --blue-light: #4d84ff;
+    --paper: #f6f8fc;
+    --paper-2: #eef2fa;
+    --ink: #131c33;
+    --slate: #5a6480;
+    --line: #dde3f0;
+    --white: #ffffff;
+    --radius: 14px;
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    color:var(--navy);
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    font-size:0.75rem;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  section{padding:110px 0;}
+  @media (max-width:768px){ section{padding:70px 0;} }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{outline:2px solid var(--blue); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(246,248,252,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:var(--maxw); margin:0 auto; padding:14px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand img{height:42px; width:42px; object-fit:cover; object-position:center 40%; transform:scale(1.9);}
+  .brand-mark{height:42px; width:42px; overflow:hidden; border-radius:8px; display:flex; align-items:center; justify-content:center;}
+  .brand-name{font-family:'Plus Jakarta Sans', sans-serif; font-weight:700; font-size:1.05rem; color:var(--navy);}
+  .brand-name span{color:var(--blue);}
+  .navlinks{display:flex; align-items:center; gap:34px;}
+  .navlinks a{font-size:0.92rem; font-weight:500; color:var(--navy-2); transition:color .15s;}
+  .navlinks a:hover{color:var(--blue);}
+  .nav-cta{
+    background:var(--navy); color:var(--white); padding:10px 20px; border-radius:8px;
+    font-size:0.88rem; font-weight:600; transition:background .15s;
+  }
+  .nav-cta:hover{background:var(--blue);}
+  .navlinks-mobile{display:none;}
+  .menu-btn{display:none; background:none; border:none; cursor:pointer; padding:6px;}
+  .menu-btn span{display:block; width:22px; height:2px; background:var(--navy); margin:5px 0;}
+  @media (max-width:860px){
+    .navlinks{display:none;}
+    .menu-btn{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:120px 0 100px;
+    overflow:hidden;
+    background:
+      radial-gradient(600px 400px at 85% -10%, rgba(28,95,224,0.10), transparent 60%),
+      var(--paper);
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:center;
+  }
+  @media (max-width:920px){ .hero-grid{grid-template-columns:1fr;} }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    color:var(--blue); font-weight:600; margin-bottom:22px;
+  }
+  .eyebrow::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--blue);}
+  .hero h1{
+    font-size:clamp(2.3rem, 4.6vw, 3.6rem);
+    font-weight:800;
+    margin-bottom:24px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(92deg, var(--blue), var(--blue-light));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p.lead{
+    font-size:1.14rem; color:var(--slate); max-width:520px; margin-bottom:38px;
+  }
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:44px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 26px; border-radius:9px; font-weight:600; font-size:0.95rem;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    border:1px solid transparent; cursor:pointer;
+  }
+  .btn-primary{background:var(--navy); color:var(--white);}
+  .btn-primary:hover{background:var(--blue); transform:translateY(-2px); box-shadow:0 10px 24px -8px rgba(28,95,224,0.55);}
+  .btn-ghost{background:transparent; color:var(--navy); border-color:var(--line);}
+  .btn-ghost:hover{border-color:var(--blue); color:var(--blue);}
+  .hero-proof{
+    display:flex; gap:34px; flex-wrap:wrap; padding-top:30px; border-top:1px solid var(--line);
+  }
+  .hero-proof div{display:flex; flex-direction:column;}
+  .hero-proof strong{font-family:'Plus Jakarta Sans'; font-size:1.5rem; color:var(--navy);}
+  .hero-proof span{font-size:0.82rem; color:var(--slate);}
+
+  /* Hero visual: automation flow signature */
+  .hero-visual{position:relative; display:flex; align-items:center; justify-content:center;}
+  .flow-card{
+    background:var(--white); border:1px solid var(--line); border-radius:18px;
+    padding:30px; width:100%; max-width:420px;
+    box-shadow:0 30px 60px -25px rgba(19,28,51,0.25);
+  }
+  .flow-card .logo-big{width:64px; height:64px; overflow:hidden; border-radius:12px; margin-bottom:18px; display:flex; align-items:center; justify-content:center; background:var(--paper-2);}
+  .flow-card .logo-big img{width:64px; height:64px; object-fit:cover; object-position:center 40%; transform:scale(1.9);}
+  .flow-row{
+    display:flex; align-items:center; gap:12px; padding:13px 14px; border-radius:10px;
+    background:var(--paper-2); margin-bottom:10px; font-size:0.86rem; color:var(--navy-2); font-weight:500;
+  }
+  .flow-row .dot{width:8px; height:8px; border-radius:50%; background:var(--blue); flex-shrink:0;}
+  .flow-row.dim{opacity:0.55;}
+  .flow-connector{width:1px; height:16px; background:var(--line); margin-left:24px;}
+  .flow-tag{
+    margin-top:14px; display:inline-flex; align-items:center; gap:6px;
+    background:rgba(28,95,224,0.08); color:var(--blue); font-size:0.78rem; font-weight:600;
+    padding:6px 12px; border-radius:20px;
+  }
+
+  /* ---------- LOGO STRIP ---------- */
+  .strip{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--white);
+    padding:26px 0;
+  }
+  .strip .wrap{display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; text-align:center;}
+  .strip p{color:var(--slate); font-size:0.92rem;}
+
+  /* ---------- SECTION HEADS ---------- */
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head .mono{color:var(--blue); margin-bottom:14px; display:block;}
+  .section-head h2{font-size:clamp(1.7rem, 3vw, 2.4rem); margin-bottom:16px;}
+  .section-head p{color:var(--slate); font-size:1.04rem;}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px;}
+  @media (max-width:800px){ .services-grid{grid-template-columns:1fr;} }
+  .service-card{
+    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+    padding:38px; transition:border-color .2s, transform .2s, box-shadow .2s;
+  }
+  .service-card:hover{border-color:var(--blue); transform:translateY(-4px); box-shadow:0 20px 40px -22px rgba(19,28,51,0.25);}
+  .service-icon{
+    width:52px; height:52px; border-radius:12px; margin-bottom:22px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--navy);
+  }
+  .service-icon svg{width:24px; height:24px;}
+  .service-card h3{font-size:1.28rem; margin-bottom:12px;}
+  .service-card p{color:var(--slate); margin-bottom:20px; font-size:0.98rem;}
+  .service-list{list-style:none;}
+  .service-list li{
+    display:flex; align-items:flex-start; gap:10px; font-size:0.92rem; color:var(--navy-2);
+    padding:7px 0; border-top:1px solid var(--paper-2);
+  }
+  .service-list li:first-child{border-top:none;}
+  .service-list li::before{content:"→"; color:var(--blue); font-weight:700; flex-shrink:0;}
+
+  /* ---------- PROCESS ---------- */
+  .process{background:var(--navy); color:var(--white); position:relative; overflow:hidden;}
+  .process::before{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(500px 300px at 90% 0%, rgba(77,132,255,0.18), transparent 60%);
+  }
+  .process .section-head h2, .process .section-head p{color:var(--white);}
+  .process .section-head p{color:#aab4d4;}
+  .process-list{position:relative; z-index:1;}
+  .process-item{
+    display:grid; grid-template-columns:90px 1fr; gap:24px; padding:28px 0;
+    border-top:1px solid rgba(255,255,255,0.12);
+    align-items:start;
+  }
+  .process-item:last-child{border-bottom:1px solid rgba(255,255,255,0.12);}
+  .process-num{font-family:'IBM Plex Mono'; font-size:0.95rem; color:var(--blue-light); padding-top:4px;}
+  .process-item h4{color:var(--white); font-size:1.15rem; margin-bottom:8px;}
+  .process-item p{color:#aab4d4; font-size:0.96rem; max-width:560px;}
+
+  /* ---------- WHY ---------- */
+  .why-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:26px;}
+  @media (max-width:860px){ .why-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .why-grid{grid-template-columns:1fr;} }
+  .why-card{padding:8px 0 8px 22px; border-left:2px solid var(--line); transition:border-color .2s;}
+  .why-card:hover{border-color:var(--blue);}
+  .why-card h4{font-size:1.05rem; margin-bottom:8px;}
+  .why-card p{color:var(--slate); font-size:0.93rem;}
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{
+    background:linear-gradient(120deg, var(--navy) 0%, var(--navy-2) 55%, #17356e 100%);
+    border-radius:22px; padding:64px 50px; color:var(--white);
+    display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;
+    position:relative; overflow:hidden;
+  }
+  .cta-band::after{
+    content:""; position:absolute; right:-60px; top:-60px; width:260px; height:260px; border-radius:50%;
+    background:radial-gradient(circle, rgba(77,132,255,0.35), transparent 70%);
+  }
+  .cta-band h3{color:var(--white); font-size:1.7rem; max-width:440px; position:relative; z-index:1;}
+  .cta-band p{color:#c3cbe6; margin-top:10px; position:relative; z-index:1;}
+  .cta-band .btn-primary{background:var(--blue); position:relative; z-index:1;}
+  .cta-band .btn-primary:hover{background:var(--blue-light);}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  @media (max-width:860px){ .contact-grid{grid-template-columns:1fr; gap:40px;} }
+  .contact-info h2{font-size:clamp(1.7rem,3vw,2.3rem); margin-bottom:18px;}
+  .contact-info p{color:var(--slate); margin-bottom:34px; max-width:440px;}
+  .contact-item{
+    display:flex; align-items:center; gap:16px; padding:18px 0; border-top:1px solid var(--line);
+  }
+  .contact-item:last-child{border-bottom:1px solid var(--line);}
+  .contact-icon{
+    width:42px; height:42px; border-radius:10px; background:var(--paper-2);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .contact-icon svg{width:19px; height:19px;}
+  .contact-item .label{font-size:0.78rem; color:var(--slate); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:3px;}
+  .contact-item .value{font-weight:600; color:var(--navy);}
+  .contact-item a.value:hover{color:var(--blue);}
+
+  .form-card{
+    background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:36px;
+  }
+  .form-row{margin-bottom:18px;}
+  .form-row label{display:block; font-size:0.85rem; font-weight:600; color:var(--navy-2); margin-bottom:7px;}
+  .form-row input, .form-row textarea{
+    width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:8px;
+    font-family:inherit; font-size:0.95rem; background:var(--paper); color:var(--ink);
+    transition:border-color .15s;
+  }
+  .form-row input:focus, .form-row textarea:focus{outline:none; border-color:var(--blue);}
+  .form-row textarea{resize:vertical; min-height:110px;}
+  .form-note{font-size:0.8rem; color:var(--slate); margin-top:14px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line); padding:44px 0;}
+  .footer-inner{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:18px;}
+  .footer-brand{display:flex; align-items:center; gap:10px;}
+  .footer-brand img{height:30px; width:30px; object-fit:cover; object-position:center 40%; transform:scale(1.9); border-radius:6px;}
+  .footer-links{display:flex; gap:26px; flex-wrap:wrap;}
+  .footer-links a{font-size:0.88rem; color:var(--slate);}
+  .footer-links a:hover{color:var(--blue);}
+  .footer-copy{font-size:0.82rem; color:var(--slate); width:100%; margin-top:26px; padding-top:22px; border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#top" class="brand">
+      <span class="brand-mark"><img src="logo.png" alt="WebPartener logo"></span>
+      <span class="brand-name">Web<span>Partener</span></span>
+    </a>
+    <div class="navlinks">
+      <a href="#servicii">Servicii</a>
+      <a href="#proces">Proces</a>
+      <a href="#despre">De ce noi</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Cere o ofertă</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow mono">Web Design &amp; Automatizare AI</span>
+        <h1>Site-uri făcute solid și <em>procese care lucrează singure.</em></h1>
+        <p class="lead">WebPartener proiectează site-uri profesionale și construiește automatizări AI care preiau task-urile repetitive — ca afacerea ta să câștige timp, claritate și clienți, nu bătăi de cap.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Discută un proiect</a>
+          <a href="#servicii" class="btn btn-ghost">Vezi serviciile</a>
+        </div>
+        <div class="hero-proof">
+          <div><strong>100%</strong><span>Design personalizat, nu șabloane</span></div>
+          <div><strong>AI-ready</strong><span>Automatizări incluse din start</span></div>
+          <div><strong>1:1</strong><span>Comunicare directă, fără intermediari</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="flow-card">
+          <div class="logo-big"><img src="logo.png" alt=""></div>
+          <div class="flow-row"><span class="dot"></span> Client completează un formular</div>
+          <div class="flow-connector"></div>
+          <div class="flow-row"><span class="dot"></span> Automatizarea AI clasifică cererea</div>
+          <div class="flow-connector"></div>
+          <div class="flow-row dim"><span class="dot"></span> Răspuns &amp; task creat automat</div>
+          <span class="flow-tag">Fără muncă manuală repetitivă</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap">
+      <p>Construit pentru afaceri care vor un site rapid, clar și corect din prima — plus automatizările care le țin în picioare.</p>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="servicii">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="mono">Servicii</span>
+        <h2>Două lucruri, făcute foarte bine</h2>
+        <p>Nu facem de toate. Facem site-uri care arată și funcționează impecabil, și automatizări AI care le fac utile pe termen lung.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/><circle cx="6.5" cy="6.5" r="0.5" fill="white"/><circle cx="9" cy="6.5" r="0.5" fill="white"/></svg>
+          </div>
+          <h3>Web Design</h3>
+          <p>Site-uri de prezentare, magazine online și platforme web construite pe măsura brandului tău — rapide, clare și optimizate să convertească vizitatori în clienți.</p>
+          <ul class="service-list">
+            <li>Design personalizat, nu template generic</li>
+            <li>Responsive complet — desktop, tabletă, mobil</li>
+            <li>Optimizare SEO &amp; viteză de încărcare</li>
+            <li>Integrare formulare, plăți și rezervări</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+          </div>
+          <h3>Automatizare AI</h3>
+          <p>Conectăm site-ul, emailul și instrumentele tale printr-un sistem care preia task-urile repetitive: preluare lead-uri, răspunsuri automate, rapoarte, sortare cereri.</p>
+          <ul class="service-list">
+            <li>Chatboți &amp; asistenți AI pentru clienți</li>
+            <li>Automatizare emailuri și lead-uri</li>
+            <li>Integrări între site, CRM și instrumente interne</li>
+            <li>Fluxuri de lucru care rulează fără intervenție</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="proces">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="mono">Cum lucrăm</span>
+        <h2>Patru etape, drum drept spre lansare</h2>
+        <p>Fără proiecte care se întind luni de zile. Un proces clar, cu termene stabilite de la început.</p>
+      </div>
+      <div class="process-list">
+        <div class="process-item">
+          <span class="process-num">01</span>
+          <div><h4>Discuție &amp; strategie</h4><p>Înțelegem afacerea ta, obiectivele și ce anume ar trebui automatizat, apoi propunem un plan concret.</p></div>
+        </div>
+        <div class="process-item">
+          <span class="process-num">02</span>
+          <div><h4>Design</h4><p>Construim un concept vizual aliniat cu brandul tău, pe care îl rafinăm împreună până e exact ce ai avut în minte.</p></div>
+        </div>
+        <div class="process-item">
+          <span class="process-num">03</span>
+          <div><h4>Dezvoltare &amp; automatizare</h4><p>Construim site-ul și conectăm automatizările AI necesare, testate temeinic înainte de lansare.</p></div>
+        </div>
+        <div class="process-item">
+          <span class="process-num">04</span>
+          <div><h4>Lansare &amp; suport</h4><p>Publicăm site-ul, îți explicăm cum îl administrezi și rămânem alături pentru mentenanță și îmbunătățiri.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="despre">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="mono">De ce WebPartener</span>
+        <h2>Un partener, nu doar un furnizor</h2>
+        <p>Numele nu e întâmplător. Tratăm fiecare proiect ca pe o colaborare pe termen lung, nu ca pe o comandă livrată o singură dată.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card"><h4>Transparență totală</h4><p>Vezi progresul în fiecare etapă, fără termeni tehnici stufoși sau surprize la final.</p></div>
+        <div class="why-card"><h4>Gândit pentru business</h4><p>Fiecare decizie de design servește un scop: mai multă încredere, mai multe conversii.</p></div>
+        <div class="why-card"><h4>Automatizare reală</h4><p>Nu doar un site frumos — un sistem care îți economisește ore de muncă în fiecare săptămână.</p></div>
+        <div class="why-card"><h4>Comunicare directă</h4><p>Vorbești mereu cu persoana care lucrează la proiectul tău, nu cu un call-center.</p></div>
+        <div class="why-card"><h4>Cod curat, fără dependențe</h4><p>Site-uri construite corect din punct de vedere tehnic, ușor de întreținut și de extins.</p></div>
+        <div class="why-card"><h4>Suport după lansare</h4><p>Rămânem disponibili pentru ajustări, mentenanță și noi automatizări pe măsură ce afacerea crește.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section>
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h3>Hai să construim ceva care chiar lucrează pentru tine.</h3>
+          <p>Spune-ne despre afacerea ta — revenim cu o propunere clară, fără angajamente.</p>
+        </div>
+        <a href="#contact" class="btn btn-primary">Începe conversația</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <span class="mono" style="color:var(--blue); display:block; margin-bottom:14px;">Contact</span>
+        <h2>Spune-ne despre proiectul tău</h2>
+        <p>Răspundem la fiecare mesaj personal. Descrie pe scurt ce ai nevoie și revenim cu următorii pași.</p>
+
+        <div class="contact-item">
+          <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1c5fe0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg></span>
+          <div><div class="label">Email</div><a class="value" href="mailto:contact@webpartener.ro">contact@webpartener.ro</a></div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1c5fe0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="#1c5fe0" stroke="none"/></svg></span>
+          <div><div class="label">Instagram</div><a class="value" href="https://instagram.com/webpartener" target="_blank" rel="noopener">@webpartener</a></div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1c5fe0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9z"/></svg></span>
+          <div><div class="label">Website</div><span class="value">webpartener.ro</span></div>
+        </div>
+      </div>
+
+      <form class="form-card" id="contactForm">
+        <div class="form-row">
+          <label for="name">Nume</label>
+          <input type="text" id="name" name="name" placeholder="Numele tău" required>
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="tu@exemplu.ro" required>
+        </div>
+        <div class="form-row">
+          <label for="message">Mesaj</label>
+          <textarea id="message" name="message" placeholder="Spune-ne câteva cuvinte despre proiectul tău..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Trimite mesajul</button>
+        <p class="form-note">Formularul deschide clientul tău de email către contact@webpartener.ro.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <a href="#top" class="footer-brand">
+      <img src="logo.png" alt="WebPartener logo">
+      <span class="brand-name" style="font-size:0.95rem;">Web<span style="color:var(--blue);">Partener</span></span>
+    </a>
+    <div class="footer-links">
+      <a href="#servicii">Servicii</a>
+      <a href="#proces">Proces</a>
+      <a href="#despre">De ce noi</a>
+      <a href="#contact">Contact</a>
+      <a href="mailto:contact@webpartener.ro">contact@webpartener.ro</a>
+      <a href="https://instagram.com/webpartener" target="_blank" rel="noopener">@webpartener</a>
+    </div>
+    <p class="footer-copy">© <span id="year"></span> WebPartener. Toate drepturile rezervate. Web Design &amp; Automatizare AI.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    const subject = encodeURIComponent('Proiect nou — ' + name);
+    const body = encodeURIComponent(message + '\n\nEmail de contact: ' + email);
+    window.location.href = `mailto:contact@webpartener.ro?subject=${subject}&body=${body}`;
+  });
+</script>
+
+</body>
+</html>
